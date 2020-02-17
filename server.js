@@ -13,6 +13,7 @@ app.post('/api/logs', function(req, res) {
              res.send(200);
         })
         .catch(error => {
+             console.log(error);
              res.send(500);
         });
 });
