@@ -6,7 +6,7 @@ const app = express();
 app.use(bodyParser.json());
 const db = pgp(process.env.DATABASE_URL);
 
-db.none('CREATE TABLE IF NOT EXISTS logs(user_id INTEGER NOT NULL, correct INTEGER NOT NULL, incorrect INTEGER NOT NULL, time INTEGER NOT NULL, score INTEGER NOT NULL, time_until_first_correct INTEGER NOT NULL, time_until_first_incorrect INTEGER NOT NULL, max_consecutive_correct INTEGER NOT NULL, max_consecutive_incorrect INTEGER NOT NULL)')
+db.none('CREATE TABLE IF NOT EXISTS logs(user_id INTEGER NOT NULL, correct INTEGER, incorrect INTEGER, time INTEGER, score INTEGER, time_until_first_correct INTEGER, time_until_first_incorrect INTEGER, max_consecutive_correct INTEGER, max_consecutive_incorrect INTEGER)')
     .then(() => console.log('Created table logs'));
 
 app.post('/api/logs', function(req, res) {
