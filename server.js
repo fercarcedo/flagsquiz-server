@@ -1,7 +1,9 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const pgp = require('pg-promise')();
 
 const app = express();
+app.use(bodyParser.json());
 const db = pgp(process.env.DATABASE_URL);
 
 app.post('/api/logs', function(req, res) {
