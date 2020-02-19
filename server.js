@@ -22,6 +22,17 @@ app.post('/api/logs', function(req, res) {
         });
 });
 
+app.get('/api/logs', function(req, res) {
+    db.any('SELECT * FROM logs')
+        .then(data => {
+            res.json(data);
+        })
+        .catch(error => {
+            console.log(error);
+            res.send(500);
+        });
+});
+
 app.listen(process.env.PORT||8080, function () {
     console.log('App running');
 });
