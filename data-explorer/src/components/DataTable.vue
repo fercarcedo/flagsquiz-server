@@ -47,6 +47,7 @@ export default {
   },
   computed: {
     filteredLogs() {
+      console.log(JSON.stringify(this.logs));
       return this.logs.filter(log => this.filter && log.user_id === this.filter)
     }
   },
