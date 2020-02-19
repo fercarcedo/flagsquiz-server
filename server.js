@@ -4,7 +4,7 @@ const pgp = require('pg-promise')();
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/data-explorer/dist'));
+app.use("/explorer", express.static(__dirname + '/public'));
 const db = pgp(process.env.DATABASE_URL);
 
 db.none('CREATE TABLE IF NOT EXISTS logs(user_id INTEGER NOT NULL, correct INTEGER, incorrect INTEGER, time INTEGER, score INTEGER, time_until_first_correct INTEGER, time_until_first_incorrect INTEGER, max_consecutive_correct INTEGER, max_consecutive_incorrect INTEGER, questions_data TEXT)')
