@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     filteredLogs() {
-      return this.logs.filter(log => this.filter && log.user_id === this.filter)
+      return this.logs.filter(log => !this.filter || log.user_id.toString() === this.filter)
     }
   },
   mounted() {
