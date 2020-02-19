@@ -47,14 +47,13 @@ export default {
   },
   computed: {
     filteredLogs() {
-      console.log(JSON.stringify(this.logs));
       return this.logs.filter(log => this.filter && log.user_id === this.filter)
     }
   },
   mounted() {
     axios
       .get("https://quizflags.herokuapp.com/api/logs")
-      .then(logs => this.logs = logs)
+      .then(logs => this.logs = logs.data)
   }
 }
 </script>
